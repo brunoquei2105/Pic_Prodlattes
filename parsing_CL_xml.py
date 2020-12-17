@@ -124,7 +124,32 @@ if response == 2:
     #Faz o parsing por produçoes bibliográficas
     print('[1]TRABALHOS-EM-EVENTOS', '\n[2]ARTIGOS-PUBLICADOS', '\n[3]LIVROS-E-CAPITULOS',
            '\n[4]DEMAIS-TIPOS-DE-PRODUCAO-BIBLIOGRAFICA', '\n[5]ARTIGOS-ACEITOS-PARA-PUBLICACAO')
+    print('Qual desses campos deseja visualizar:')
+    campo2 = int(input())
 
+    if campo2 == 1:
+        print(f'***ID Curriculum: {get_id(root)}***')
+        print()
+        for evento in root.iter("DADOS-BASICOS-DO-TRABALHO"):
+            print(
+                f'Titulo do Trabalho: {evento.attrib["TITULO-DO-TRABALHO"]}\n Ano: {evento.attrib["ANO-DO-TRABALHO"]}\n'
+                f'País: {evento.attrib["PAIS-DO-EVENTO"]}')
+            print()
+    if campo2 == 2:
+        print(f'***ID Curriculum: {get_id(root)}***')
+        print(get_article(root))
+
+    if campo2 == 3:
+        print(f'***ID Curriculum: {get_id(root)}***')
+        print()
+        soma = 0
+        print('Livro Publicado ou Organizado\n')
+        for livro in root.iter("DADOS-BASICOS-DO-LIVRO"):
+            print(f" {livro.attrib['TITULO-DO-LIVRO']}\n Ano: {livro.attrib['ANO']}")
+            soma
+        print(f'São {soma} livro publicados ou organizados por {get_nome(root)}')
+    if campo2 ==4:
+        pass
 
 
 """BANCO DE DADOS"""
